@@ -93,4 +93,31 @@
         android:visibility="gone"
         />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        >
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/fourWord"
+            />
+        <CheckedTextView
+            android:id="@+id/fourWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="選猜四個數字"
+            android:textSize="28sp"
+            android:textStyle="italic"
+
+            />
+
+
+
+
+    </RelativeLayout>
+
 </RelativeLayout>

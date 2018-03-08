@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity
         log.setText("");
         answer = "123"; //解答
         Log.v("brad", answer);
-    }//初始化
-    
+    }//initGame() 初始化
+
     private void doGuess()
     {
         //取得 輸入 顯示於textView中
