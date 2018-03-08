@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         answer = "123"; //解答
         Log.v("brad", answer);
     }//初始化
-
+    
     private void doGuess()
     {
         //取得 輸入 顯示於textView中
