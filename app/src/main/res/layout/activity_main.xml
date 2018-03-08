@@ -42,6 +42,7 @@
         >
 
         <Button
+            android:id="@+id/reset"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -50,12 +51,14 @@
             android:onClick="reset"
             />
         <Button
+            android:id="@+id/setting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Setting"
             />
         <Button
+            android:id="@+id/exit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -92,32 +95,5 @@
         android:background="#ff0"
         android:visibility="gone"
         />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        >
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/fourWord"
-            />
-        <CheckedTextView
-            android:id="@+id/fourWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="選猜四個數字"
-            android:textSize="28sp"
-            android:textStyle="italic"
-
-            />
-
-
-
-
-    </RelativeLayout>
 
 </RelativeLayout>

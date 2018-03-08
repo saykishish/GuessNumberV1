@@ -13,11 +13,14 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
 {
-    private Button guess;
+    private Button guess, restart, setting, exit;
     private EditText input;
     private TextView log, mesg;
     private String answer;
 
+    //先會做記數的動作  到了第九次 還可以再玩 再猜 沒中 再來第十次 也沒猜中 ，就進入if判斷  else印出
+    private int count; //做加加
+    private int initZero; //上限
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,6 +32,9 @@ public class MainActivity extends AppCompatActivity
         input = findViewById(R.id.input);
         log = findViewById(R.id.log);
         mesg = findViewById(R.id.mesg);
+        //restart = findViewById(R.id.reset);
+        setting = findViewById(R.id.setting);
+        //exit = findViewById(R.id.exit);
 
         guess.setOnClickListener(new View.OnClickListener()
         {
@@ -54,6 +60,8 @@ public class MainActivity extends AppCompatActivity
         log.setText("");
         answer = "123"; //解答
         Log.v("brad", answer);
+        count = 0;
+
     }//initGame() 初始化
 
     private void doGuess()
@@ -63,16 +71,28 @@ public class MainActivity extends AppCompatActivity
         input.setText("");
         //log.setText(strInput);
 
+        count++;
+
+//        if(count == 10){
+//            showLoseDialog();
+//        }//if
+
         String result = checkAB(answer, strInput);
         log.append(strInput + ":" + result + "\n");
 
+
+
+
+        //如果 使用者輸入的結果 等同於 3A0B 的話就 贏視窗。  否則 次數尚未等於10還是可以繼續猜，等於10 就輸視窗
         if(result.equals("3A0B")) {
-         showDialog();
-        }//if
+            showWinDialog();
+        }else if (count == 10){
+            showLoseDialog();
+        }
 
     }//doGuess()
 
-    private void showDialog()
+    private void showWinDialog()
     {
         AlertDialog alert = null;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -87,7 +107,25 @@ public class MainActivity extends AppCompatActivity
         });//OnClickListener()
         alert = builder.create();
         alert.show();
-    }//showDialog
+    }//showWinDialog
+
+    private void showLoseDialog()
+    {
+        AlertDialog alert = null;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Loser");
+        builder.setMessage("你十次都猜錯搂，請重玩!");
+        builder.setCancelable(false);
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                initGame();
+            }
+        });//OnClickListener()
+        alert = builder.create();
+        alert.show();
+    }//showLoseDialog()
+
 
     static String checkAB(String a, String g)
     {
